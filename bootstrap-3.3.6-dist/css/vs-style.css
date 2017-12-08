@@ -1,0 +1,44 @@
+/* -------------------- */
+/* homepage background */
+#full-screen-background-image {
+  z-index: -999;
+  min-height: 100%;
+  min-width: 1024px;
+  width: 100%;
+  height: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+#wrapper {
+  position: relative;
+  width: 800px;
+  min-height: 400px;
+  margin: 100px auto;
+  color: #333;
+}
+/* /homepage background */
+/* -------------------- */
+
+#homepage_title { color: #645D4D; font-family: Palatino; }
+
+#homepage_navbar { background-color: #fff; }
+
+.container { background-color: #006699; }
+
+/*body{font-family: Palatino; font-size: medium; }*/
+
+#header { color: white; font-family: Palatino; } /* Baskerville */
+
+#footer { color: white; font-family: Palatino; font-size: medium; }
+
+#center-th { text-align: center; }
+
+#center-td { text-align: center; }
+
+/*.jumbotron { background-color: white; }*/
+
+/*.page-header { color: white; }*/
+
+/*.container{ background-image: url("../images/Quotefancy-8177-3840x2160.jpg"); }*/

@@ -1,0 +1,244 @@
+-- phpMyAdmin SQL Dump
+-- version 4.4.10
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Apr 01, 2016 at 11:46 AM
+-- Server version: 5.5.42
+-- PHP Version: 5.6.10
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `vetworki_db`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bootcamps`
+--
+
+CREATE TABLE `bootcamps` (
+  `bc_id` int(11) NOT NULL,
+  `bc_title` varchar(225) NOT NULL,
+  `bc_description` varchar(225) NOT NULL,
+  `bc_location` varchar(225) NOT NULL,
+  `bc_time` varchar(225) NOT NULL,
+  `bc_startdate` varchar(25) NOT NULL,
+  `bc_enddate` varchar(25) NOT NULL,
+  `bc_host_name` varchar(25) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `bootcamps`
+--
+
+INSERT INTO `bootcamps` (`bc_id`, `bc_title`, `bc_description`, `bc_location`, `bc_time`, `bc_startdate`, `bc_enddate`, `bc_host_name`) VALUES
+(17, 'jj', 'jj', 'jj', 'jj', '04/01/2016', '04/12/2016', 'host'),
+(19, 'b', 'b', 'b', 'b', '03/22/2016', '03/23/2016', 'host'),
+(20, 'hhh', 'hhh', 'hhh', 'hhh', '03/23/2016', '03/25/2016', 'host'),
+(21, 'kk', 'kk', 'kk', 'kk', '03/22/2016', '03/31/2016', 'host'),
+(22, 'h', 'h', 'h', 'h', '04/01/2016', '04/01/2016', 'host'),
+(24, 'er reve', 'jjbkj', 'khj jhb', 'kjh khj', '04/01/2016', '04/01/2016', 'host');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bootcamps_attendances`
+--
+
+CREATE TABLE `bootcamps_attendances` (
+  `att_id` int(11) NOT NULL,
+  `bc_id` int(11) NOT NULL,
+  `bc_title` varchar(225) NOT NULL,
+  `bc_description` varchar(225) NOT NULL,
+  `bc_location` varchar(225) NOT NULL,
+  `bc_time` varchar(225) NOT NULL,
+  `bc_startdate` varchar(25) NOT NULL,
+  `bc_enddate` varchar(25) NOT NULL,
+  `bc_host_name` varchar(25) NOT NULL,
+  `username` varchar(25) NOT NULL,
+  `role` varchar(50) NOT NULL,
+  `att_status` varchar(25) NOT NULL DEFAULT 'waiting'
+) ENGINE=InnoDB AUTO_INCREMENT=161 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `bootcamps_attendances`
+--
+
+INSERT INTO `bootcamps_attendances` (`att_id`, `bc_id`, `bc_title`, `bc_description`, `bc_location`, `bc_time`, `bc_startdate`, `bc_enddate`, `bc_host_name`, `username`, `role`, `att_status`) VALUES
+(148, 17, 'jjj', 'kkk', 'ff', 'ff', '03/15/2016', '03/18/2016', 'host', 'cat', 'caterer', 'approved'),
+(150, 21, 'kk', 'kk', 'kk', 'kk', '03/22/2016', '03/31/2016', 'host', 'career_coach', '', 'requested'),
+(153, 21, 'kk', 'kk', 'kk', 'kk', '03/22/2016', '03/31/2016', 'host', 'assessment_exp', 'assessment_expert', 'approved'),
+(159, 24, 'er reve', 'jjbkj', 'khj jhb', 'kjh khj', '04/01/2016', '04/01/2016', 'host', 'caterer', 'caterer', 'approved'),
+(160, 22, 'h', 'h', '', '', '04/01/2016', 'h', 'host', 'caterer', 'caterer', 'waiting');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `offers`
+--
+
+CREATE TABLE `offers` (
+  `offer_id` tinyint(10) NOT NULL,
+  `sender_name` varchar(25) NOT NULL,
+  `receiver_name` varchar(25) NOT NULL,
+  `status` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `requests`
+--
+
+CREATE TABLE `requests` (
+  `request_id` tinyint(10) NOT NULL,
+  `sender_name` varchar(25) NOT NULL,
+  `receiver_name` varchar(25) NOT NULL,
+  `status` varchar(10) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `requests`
+--
+
+INSERT INTO `requests` (`request_id`, `sender_name`, `receiver_name`, `status`) VALUES
+(38, 'veteran', 'mentor', ''),
+(39, 'veteran', 'm', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `user_id` tinyint(10) NOT NULL,
+  `uname` varchar(25) NOT NULL,
+  `psword` varchar(64) NOT NULL,
+  `fname` varchar(15) NOT NULL,
+  `lname` varchar(15) NOT NULL,
+  `email` varchar(20) NOT NULL,
+  `phone` varchar(10) NOT NULL,
+  `state` varchar(2) NOT NULL,
+  `city` varchar(25) NOT NULL,
+  `zip` varchar(5) NOT NULL,
+  `address` varchar(25) NOT NULL,
+  `image` longblob NOT NULL,
+  `name` varchar(225) NOT NULL,
+  `resume` varchar(225) NOT NULL,
+  `emp_status` varchar(15) NOT NULL,
+  `industry_work` varchar(50) NOT NULL,
+  `industry_interested` varchar(50) DEFAULT NULL,
+  `veteran_date_became` varchar(25) DEFAULT NULL,
+  `caterer_food_license` varchar(225) DEFAULT NULL,
+  `career_coach_certification` varchar(225) DEFAULT NULL,
+  `role` varchar(50) NOT NULL,
+  `reg_date` datetime NOT NULL,
+  `last_login` datetime NOT NULL,
+  `attempts` int(5) NOT NULL,
+  `last_attempt` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`user_id`, `uname`, `psword`, `fname`, `lname`, `email`, `phone`, `state`, `city`, `zip`, `address`, `image`, `name`, `resume`, `emp_status`, `industry_work`, `industry_interested`, `veteran_date_became`, `caterer_food_license`, `career_coach_certification`, `role`, `reg_date`, `last_login`, `attempts`, `last_attempt`) VALUES
+(10, 'veteran', '7a38d8cbd20d9932ba948efaa364bb62651d5ad4', 'v', 'v', 'v', 'v', 'NJ', 'v', 'v', 'v', '', '', '', 'Employee', 'IT', '', '', '', '', 'veteran', '2016-01-31 08:48:06', '2016-03-06 07:15:56', 0, '2016-03-06 06:09:46'),
+(11, 'mentor', '6b0d31c0d563223024da45691584643ac78c96e8', 'm', 'm', 'm', 'm', 'MN', 'm', 'm', 'm', '', '', '', 'Employee', 'IT', '', '', '', '', 'mentor', '2016-01-31 08:49:29', '2016-03-06 05:11:56', 0, '2016-03-06 05:10:42'),
+(12, 'host', '27d5482eebd075de44389774fce28c69f45c8a75', 'h', 'h', 'mr.d7om.sh@gmail.com', '4156915386', 'NJ', 'h', '07740', 'h', '', '', 'h', 'Employee', 'IT', '', '', '', '', 'host', '2016-01-31 08:50:09', '2016-04-01 05:28:38', 0, '2016-03-21 08:46:21'),
+(13, 'caterer', '84a516841ba77a5b4648de2cd0dfcb30ea46dbb4', 'c', 'c', 'c', 'c', 'NY', 'c', 'c', 'c', '', '', '', 'Employee', 'IT', '', '', '', '', 'caterer', '2016-01-31 08:50:28', '2016-04-01 05:32:26', 0, '0000-00-00 00:00:00'),
+(16, 'm', '6b0d31c0d563223024da45691584643ac78c96e8', 'm', 'm', 'm', 'm', 'NJ', 'm', 'm', 'm', '', '', '', 'Employee', 'IT', '', '', '', '', 'mentor', '2016-02-03 08:15:36', '2016-03-06 05:13:07', 0, '0000-00-00 00:00:00'),
+(19, 'h', '27d5482eebd075de44389774fce28c69f45c8a75', 'h', 'h', 'h', 'h', 'NJ', 'h', 'h', 'h', '', '', '', 'Employee', 'Healt Care', '', '', '', '', 'host', '2016-03-10 01:51:36', '2016-03-14 01:23:41', 0, '2016-03-11 02:44:46'),
+(20, 'assessment_exp', '86f7e437faa5a7fce15d1ddcb9eaeaea377667b8', 'a', 'a', 'a', 'a', 'NJ', 'a', 'a', 'a', '', '', '', 'Employee', 'IT', '', '', '', '', 'assessment_expert', '2016-03-10 06:08:26', '2016-03-30 05:46:39', 0, '0000-00-00 00:00:00'),
+(21, 'career_coach', '84a516841ba77a5b4648de2cd0dfcb30ea46dbb4', 'c', 'c', 'c', 'c', 'NJ', 'c', 'c', 'c', '', '', '', 'Employee', 'IT', '', '', '', '', 'career_coach', '2016-03-10 06:08:56', '2016-04-01 05:26:53', 0, '0000-00-00 00:00:00'),
+(22, 'resume_exp', '4dc7c9ec434ed06502767136789763ec11d2c4b7', 'r', 'r', 'r', 'r', 'NJ', 'r', 'r', 'r', '', '', '', 'Employee', 'IT', '', '', '', '', 'resume_expert', '2016-03-10 06:09:20', '2016-03-30 04:42:46', 0, '0000-00-00 00:00:00'),
+(23, 'panelist_recruiter', '516b9783fca517eecbd1d064da2d165310b19759', 'p', 'p', 'p', 'p', 'PA', 'p', 'p', 'p', '', '', '', 'Employee', 'IT', '', '', '', '', 'panelist_recruiter', '2016-03-10 06:09:49', '2016-03-30 04:20:06', 0, '0000-00-00 00:00:00'),
+(24, 'job_fair_recruiter', '5c2dd944dde9e08881bef0894fe7b22a5c9c4b06', 'j', 'j', 'j', 'j', 'NJ', 'j', 'j', 'j', '', '', '', 'Employee', 'IT', '', '', '', '', 'job_fair_recruiter', '2016-03-10 06:10:19', '2016-03-30 04:10:47', 0, '0000-00-00 00:00:00'),
+(27, 'v', '7a38d8cbd20d9932ba948efaa364bb62651d5ad4', 'v', 'v', 'v', 'v', 'NJ', 'v', 'v', 'v', '', '', '', 'Employee', 'IT', '', '', '', '', 'veteran', '2016-03-10 06:31:29', '2016-03-10 06:36:44', 0, '0000-00-00 00:00:00'),
+(28, 'c', '84a516841ba77a5b4648de2cd0dfcb30ea46dbb4', 'c', 'c', 'c', 'c', 'NJ', 'c', 'c', 'c', '', '', '', 'Employee', 'IT', '', '', '', '', 'caterer', '2016-03-13 11:40:09', '2016-03-22 12:47:27', 0, '0000-00-00 00:00:00'),
+(30, 'vv', '7a38d8cbd20d9932ba948efaa364bb62651d5ad4', 'v', 'v', 'v', 'v', 'NJ', 'v', 'v', 'v', '', '', '', 'Employee', 'IT', '', '', '', '', 'veteran', '2016-03-14 05:12:22', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00'),
+(35, 'cat', '84a516841ba77a5b4648de2cd0dfcb30ea46dbb4', 'c', 'c', 'c', 'c', 'NJ', 'c', 'c', 'c', '', '', '', 'Employee', 'IT', '', '', '', '', 'caterer', '2016-03-15 06:22:43', '2016-03-30 05:42:50', 0, '0000-00-00 00:00:00'),
+(37, 'vdwjifjlwEFIjwe', '7a38d8cbd20d9932ba948efaa364bb62651d5ad4', 'h', 'h', 'mr.d7om.sh@gmail.com', '415-691-53', 'NJ', 'h', 'h', 'h', '', '', 'h', 'Employee', 'Healt Care', 'Healt Care', '04/01/2016', NULL, NULL, 'veteran', '2016-04-01 12:06:05', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00'),
+(38, 'vjvdskivdk', '7a38d8cbd20d9932ba948efaa364bb62651d5ad4', 'jh', 'jkh', 'mr.d7om.sh@gmail.com', '4156915386', 'NJ', 'kjh', 'uh', 'kjh', '', '', 'grsd', 'Employee', 'IT', 'IT', '04/08/2016', NULL, NULL, 'veteran', '2016-04-01 12:09:29', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00'),
+(39, 'vkjhkajhfjkwe', '7a38d8cbd20d9932ba948efaa364bb62651d5ad4', 'v', 'v', 'mr.d7om.sh@gmail.com', '4156915386', 'NJ', 'v', '07740', 'v', '', '', 'rs', 'Employee', 'IT', 'IT', '04/02/2016', NULL, NULL, 'veteran', '2016-04-01 12:27:23', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00'),
+(40, 'vkjhfesjh', '7a38d8cbd20d9932ba948efaa364bb62651d5ad4', 'v', 'v', 'mr.d7om.sh@gmail.com', '4156915386', 'NJ', 'v', '12345', 'v', '', '', 'kjh', 'Employee', 'IT', 'IT', '04/01/2016', NULL, NULL, 'veteran', '2016-04-01 12:31:40', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `bootcamps`
+--
+ALTER TABLE `bootcamps`
+  ADD PRIMARY KEY (`bc_id`);
+
+--
+-- Indexes for table `bootcamps_attendances`
+--
+ALTER TABLE `bootcamps_attendances`
+  ADD PRIMARY KEY (`att_id`);
+
+--
+-- Indexes for table `offers`
+--
+ALTER TABLE `offers`
+  ADD PRIMARY KEY (`offer_id`);
+
+--
+-- Indexes for table `requests`
+--
+ALTER TABLE `requests`
+  ADD PRIMARY KEY (`request_id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `user_id` (`user_id`),
+  ADD UNIQUE KEY `uname` (`uname`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `bootcamps`
+--
+ALTER TABLE `bootcamps`
+  MODIFY `bc_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=26;
+--
+-- AUTO_INCREMENT for table `bootcamps_attendances`
+--
+ALTER TABLE `bootcamps_attendances`
+  MODIFY `att_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=161;
+--
+-- AUTO_INCREMENT for table `offers`
+--
+ALTER TABLE `offers`
+  MODIFY `offer_id` tinyint(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `requests`
+--
+ALTER TABLE `requests`
+  MODIFY `request_id` tinyint(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=40;
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `user_id` tinyint(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=41;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
